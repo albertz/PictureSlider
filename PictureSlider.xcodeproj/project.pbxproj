@@ -20,10 +20,10 @@
 		23DA3FA21490FB5A000D553A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		23DA3FA31490FB5A000D553A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		23DA3FA41490FB5A000D553A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		23DA3FA71490FB5A000D553A /* PictureSlider-Info.plist */ = {isa = PBXFileReference; path = "PictureSlider-Info.plist"; sourceTree = "<group>"; };
+		23DA3FA71490FB5A000D553A /* PictureSlider-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PictureSlider-Info.plist"; sourceTree = "<group>"; };
 		23DA3FA91490FB5A000D553A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		23DA3FAB1490FB5A000D553A /* PictureSlider-Prefix.pch */ = {isa = PBXFileReference; path = "PictureSlider-Prefix.pch"; sourceTree = "<group>"; };
-		23DA3FAC1490FB5B000D553A /* PictureSliderView.h */ = {isa = PBXFileReference; path = PictureSliderView.h; sourceTree = "<group>"; };
+		23DA3FAB1490FB5A000D553A /* PictureSlider-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PictureSlider-Prefix.pch"; sourceTree = "<group>"; };
+		23DA3FAC1490FB5B000D553A /* PictureSliderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PictureSliderView.h; sourceTree = "<group>"; };
 		23DA3FAD1490FB5B000D553A /* PictureSliderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PictureSliderView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
