@@ -11,7 +11,24 @@
 		23DA3FA01490FB5A000D553A /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DA3F9F1490FB5A000D553A /* ScreenSaver.framework */; };
 		23DA3FAA1490FB5A000D553A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 23DA3FA81490FB5A000D553A /* InfoPlist.strings */; };
 		23DA3FAE1490FB5B000D553A /* PictureSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DA3FAD1490FB5B000D553A /* PictureSliderView.m */; };
+		23DA3FB81491028B000D553A /* FileQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 23DA3FB71491028B000D553A /* FileQueue.cpp */; };
+		23DA3FBB149102A0000D553A /* FileQueue.h in Headers */ = {isa = PBXBuildFile; fileRef = 23DA3FBA149102A0000D553A /* FileQueue.h */; };
+		23DA3FBD14915B00000D553A /* demo_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 23DA3FBC14915B00000D553A /* demo_main.cpp */; };
+		23DA3FCC14915B4F000D553A /* FileQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 23DA3FB71491028B000D553A /* FileQueue.cpp */; };
+		23DA3FCD14915B99000D553A /* demo_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 23DA3FBC14915B00000D553A /* demo_main.cpp */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		23DA3FC014915B47000D553A /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		23DA3F9A1490FB5A000D553A /* PictureSlider.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PictureSlider.saver; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -25,6 +42,10 @@
 		23DA3FAB1490FB5A000D553A /* PictureSlider-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PictureSlider-Prefix.pch"; sourceTree = "<group>"; };
 		23DA3FAC1490FB5B000D553A /* PictureSliderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PictureSliderView.h; sourceTree = "<group>"; };
 		23DA3FAD1490FB5B000D553A /* PictureSliderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PictureSliderView.m; sourceTree = "<group>"; };
+		23DA3FB71491028B000D553A /* FileQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FileQueue.cpp; sourceTree = "<group>"; };
+		23DA3FBA149102A0000D553A /* FileQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileQueue.h; sourceTree = "<group>"; };
+		23DA3FBC14915B00000D553A /* demo_main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = demo_main.cpp; sourceTree = "<group>"; };
+		23DA3FC214915B47000D553A /* demo_main */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = demo_main; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -34,6 +55,13 @@
 			files = (
 				23DA3F9E1490FB5A000D553A /* Cocoa.framework in Frameworks */,
 				23DA3FA01490FB5A000D553A /* ScreenSaver.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23DA3FBF14915B47000D553A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				23DA3F9A1490FB5A000D553A /* PictureSlider.saver */,
+				23DA3FC214915B47000D553A /* demo_main */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -83,6 +112,9 @@
 				23DA3FAC1490FB5B000D553A /* PictureSliderView.h */,
 				23DA3FAD1490FB5B000D553A /* PictureSliderView.m */,
 				23DA3FA61490FB5A000D553A /* Supporting Files */,
+				23DA3FB71491028B000D553A /* FileQueue.cpp */,
+				23DA3FBA149102A0000D553A /* FileQueue.h */,
+				23DA3FBC14915B00000D553A /* demo_main.cpp */,
 			);
 			path = PictureSlider;
 			sourceTree = "<group>";
@@ -104,6 +136,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23DA3FBB149102A0000D553A /* FileQueue.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +162,23 @@
 			productReference = 23DA3F9A1490FB5A000D553A /* PictureSlider.saver */;
 			productType = "com.apple.product-type.bundle";
 		};
+		23DA3FC114915B47000D553A /* demo_main */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 23DA3FC914915B48000D553A /* Build configuration list for PBXNativeTarget "demo_main" */;
+			buildPhases = (
+				23DA3FBE14915B47000D553A /* Sources */,
+				23DA3FBF14915B47000D553A /* Frameworks */,
+				23DA3FC014915B47000D553A /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = demo_main;
+			productName = demo_main;
+			productReference = 23DA3FC214915B47000D553A /* demo_main */;
+			productType = "com.apple.product-type.tool";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -151,6 +201,7 @@
 			projectRoot = "";
 			targets = (
 				23DA3F991490FB59000D553A /* PictureSlider */,
+				23DA3FC114915B47000D553A /* demo_main */,
 			);
 		};
 /* End PBXProject section */
@@ -182,6 +233,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				23DA3FAE1490FB5B000D553A /* PictureSliderView.m in Sources */,
+				23DA3FB81491028B000D553A /* FileQueue.cpp in Sources */,
+				23DA3FBD14915B00000D553A /* demo_main.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		23DA3FBE14915B47000D553A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23DA3FCC14915B4F000D553A /* FileQueue.cpp in Sources */,
+				23DA3FCD14915B99000D553A /* demo_main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -204,6 +266,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -232,6 +296,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -272,6 +338,20 @@
 			};
 			name = Release;
 		};
+		23DA3FCA14915B48000D553A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		23DA3FCB14915B48000D553A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -289,6 +369,15 @@
 			buildConfigurations = (
 				23DA3FB21490FB5B000D553A /* Debug */,
 				23DA3FB31490FB5B000D553A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		23DA3FC914915B48000D553A /* Build configuration list for PBXNativeTarget "demo_main" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23DA3FCA14915B48000D553A /* Debug */,
+				23DA3FCB14915B48000D553A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
