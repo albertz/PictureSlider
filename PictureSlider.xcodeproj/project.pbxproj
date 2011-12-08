@@ -1,0 +1,298 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		23DA3F9E1490FB5A000D553A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DA3F9D1490FB5A000D553A /* Cocoa.framework */; };
+		23DA3FA01490FB5A000D553A /* ScreenSaver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DA3F9F1490FB5A000D553A /* ScreenSaver.framework */; };
+		23DA3FAA1490FB5A000D553A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 23DA3FA81490FB5A000D553A /* InfoPlist.strings */; };
+		23DA3FAE1490FB5B000D553A /* PictureSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23DA3FAD1490FB5B000D553A /* PictureSliderView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		23DA3F9A1490FB5A000D553A /* PictureSlider.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PictureSlider.saver; sourceTree = BUILT_PRODUCTS_DIR; };
+		23DA3F9D1490FB5A000D553A /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		23DA3F9F1490FB5A000D553A /* ScreenSaver.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScreenSaver.framework; path = System/Library/Frameworks/ScreenSaver.framework; sourceTree = SDKROOT; };
+		23DA3FA21490FB5A000D553A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		23DA3FA31490FB5A000D553A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		23DA3FA41490FB5A000D553A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		23DA3FA71490FB5A000D553A /* PictureSlider-Info.plist */ = {isa = PBXFileReference; path = "PictureSlider-Info.plist"; sourceTree = "<group>"; };
+		23DA3FA91490FB5A000D553A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		23DA3FAB1490FB5A000D553A /* PictureSlider-Prefix.pch */ = {isa = PBXFileReference; path = "PictureSlider-Prefix.pch"; sourceTree = "<group>"; };
+		23DA3FAC1490FB5B000D553A /* PictureSliderView.h */ = {isa = PBXFileReference; path = PictureSliderView.h; sourceTree = "<group>"; };
+		23DA3FAD1490FB5B000D553A /* PictureSliderView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PictureSliderView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		23DA3F951490FB59000D553A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23DA3F9E1490FB5A000D553A /* Cocoa.framework in Frameworks */,
+				23DA3FA01490FB5A000D553A /* ScreenSaver.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		23DA3F8D1490FB58000D553A = {
+			isa = PBXGroup;
+			children = (
+				23DA3FA51490FB5A000D553A /* PictureSlider */,
+				23DA3F9C1490FB5A000D553A /* Frameworks */,
+				23DA3F9B1490FB5A000D553A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		23DA3F9B1490FB5A000D553A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				23DA3F9A1490FB5A000D553A /* PictureSlider.saver */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		23DA3F9C1490FB5A000D553A /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				23DA3F9D1490FB5A000D553A /* Cocoa.framework */,
+				23DA3F9F1490FB5A000D553A /* ScreenSaver.framework */,
+				23DA3FA11490FB5A000D553A /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		23DA3FA11490FB5A000D553A /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				23DA3FA21490FB5A000D553A /* AppKit.framework */,
+				23DA3FA31490FB5A000D553A /* CoreData.framework */,
+				23DA3FA41490FB5A000D553A /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		23DA3FA51490FB5A000D553A /* PictureSlider */ = {
+			isa = PBXGroup;
+			children = (
+				23DA3FAC1490FB5B000D553A /* PictureSliderView.h */,
+				23DA3FAD1490FB5B000D553A /* PictureSliderView.m */,
+				23DA3FA61490FB5A000D553A /* Supporting Files */,
+			);
+			path = PictureSlider;
+			sourceTree = "<group>";
+		};
+		23DA3FA61490FB5A000D553A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				23DA3FA71490FB5A000D553A /* PictureSlider-Info.plist */,
+				23DA3FA81490FB5A000D553A /* InfoPlist.strings */,
+				23DA3FAB1490FB5A000D553A /* PictureSlider-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		23DA3F961490FB59000D553A /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		23DA3F991490FB59000D553A /* PictureSlider */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 23DA3FB11490FB5B000D553A /* Build configuration list for PBXNativeTarget "PictureSlider" */;
+			buildPhases = (
+				23DA3F941490FB59000D553A /* Sources */,
+				23DA3F951490FB59000D553A /* Frameworks */,
+				23DA3F961490FB59000D553A /* Headers */,
+				23DA3F971490FB59000D553A /* Resources */,
+				23DA3F981490FB59000D553A /* Rez */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PictureSlider;
+			productName = PictureSlider;
+			productReference = 23DA3F9A1490FB5A000D553A /* PictureSlider.saver */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		23DA3F8F1490FB58000D553A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+				ORGANIZATIONNAME = "Albert Zeyer";
+			};
+			buildConfigurationList = 23DA3F921490FB58000D553A /* Build configuration list for PBXProject "PictureSlider" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 23DA3F8D1490FB58000D553A;
+			productRefGroup = 23DA3F9B1490FB5A000D553A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				23DA3F991490FB59000D553A /* PictureSlider */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		23DA3F971490FB59000D553A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23DA3FAA1490FB5A000D553A /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXRezBuildPhase section */
+		23DA3F981490FB59000D553A /* Rez */ = {
+			isa = PBXRezBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXRezBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		23DA3F941490FB59000D553A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				23DA3FAE1490FB5B000D553A /* PictureSliderView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		23DA3FA81490FB5A000D553A /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				23DA3FA91490FB5A000D553A /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		23DA3FAF1490FB5B000D553A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_OBJC_GC = supported;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		23DA3FB01490FB5B000D553A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_ENABLE_OBJC_GC = supported;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		23DA3FB21490FB5B000D553A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PictureSlider/PictureSlider-Prefix.pch";
+				INFOPLIST_FILE = "PictureSlider/PictureSlider-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Debug;
+		};
+		23DA3FB31490FB5B000D553A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PictureSlider/PictureSlider-Prefix.pch";
+				INFOPLIST_FILE = "PictureSlider/PictureSlider-Info.plist";
+				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = saver;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		23DA3F921490FB58000D553A /* Build configuration list for PBXProject "PictureSlider" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23DA3FAF1490FB5B000D553A /* Debug */,
+				23DA3FB01490FB5B000D553A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		23DA3FB11490FB5B000D553A /* Build configuration list for PBXNativeTarget "PictureSlider" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				23DA3FB21490FB5B000D553A /* Debug */,
+				23DA3FB31490FB5B000D553A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 23DA3F8F1490FB58000D553A /* Project object */;
+}
