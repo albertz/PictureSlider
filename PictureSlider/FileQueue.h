@@ -9,6 +9,14 @@
 #ifndef PictureSlider_FileQueue_h
 #define PictureSlider_FileQueue_h
 
-extern "C" const char* FileQueue_getNextFile();
+#ifdef __cplusplus
+extern "C" {
+#endif
+	
+	const char* FileQueue_getNextFile();
+	
+#ifdef __cplusplus
+}
+#endif
 
 #endif
