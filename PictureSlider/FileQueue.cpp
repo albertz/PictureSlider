@@ -18,37 +18,10 @@
 #include <dirent.h>
 #include <sys/stat.h>
 
-std::mt19937 rnd;
-
-static void printRndState() {
-	struct RND {
-		uint32_t __x_[rnd.state_size];
-		uint32_t __i_;
-	};
-	for(int i = 0; i < rnd.state_size; ++i)
-		printf("x[%i] = %u\n", i, ((RND*)&rnd)->__x_[i]);
-	printf("i = %u\n", ((RND*)&rnd)->__i_);
-}
-
-static void _rand_engine__init() {
-	uint32_t n = (uint32_t)time(NULL);
-	n = (n << 16) + (n >> 16);
-	printf("seeded with %u\n", n);
-	rnd.seed(n);
-	printRndState();
-}
-
-static float rndFloat() {
-	return float(rnd() - rnd.min()) / (rnd.max() - rnd.min());
-}
-
-static double rndDouble() {
-	return double(rndFloat()) * double(rndFloat());
-}
+std::mt19937 rnd((uint32_t)time(NULL));
 
 static uint64_t rndInt(uint64_t min, uint64_t max) {
-	//return std::uniform_int_distribution<uint64_t>(min,max)(rnd);
-	return rndDouble() * (max - min) + min;
+	return std::uniform_int_distribution<uint64_t>(min,max)(rnd);
 }
 
 static bool _isGoodFile(const std::string& basefn, struct dirent* dp) {
@@ -119,7 +92,7 @@ struct Dir {
 		size_t rmax = expectedFilesCount();
 		if(rmax == 0) return "";
 		size_t r = rndInt(0, rmax - 1);
-		printf("randomGet(%s): files:%lu, exp:%lu, r:%lu\n", base.c_str(), files.size(), rmax, r);
+		//printf("randomGet(%s): files:%lu, exp:%lu, r:%lu\n", base.c_str(), files.size(), rmax, r);
 		if(r < files.size())
 			return base + "/" + files[r];
 		r -= files.size();
@@ -154,11 +127,6 @@ FileQueue _queue;
 static std::string _nextFile;
 
 const char* FileQueue_getNextFile() {
-	printRndState();
-	for(int i = 0; i < 100; ++i) {
-		printf("rnd: %i\n", rnd());
-	}
-	exit(-1);
 	_nextFile = _queue.root.randomGet();
 	return _nextFile.c_str();
 }
