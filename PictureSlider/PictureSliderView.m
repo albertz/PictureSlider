@@ -233,9 +233,10 @@ const float slideshowInterval = 5.0;
         [self setAnimationTimeInterval:1/60.0];
     }
 
-	[self setWantsLayer:YES];	
+	[self setWantsLayer:YES];
 	[self startSlideshowTimer];
-
+	[self loadNext];
+	
 	return self;
 }
 
