@@ -213,17 +213,45 @@ const float slideshowInterval = 5.0;
     }
 }
 
+- (void) queuedFileNamesPop:(NSString**)fn {
+	if([queuedFileNames count] > 0) {
+		*fn = [queuedFileNames objectAtIndex:0];
+		[queuedFileNames removeObjectAtIndex:0];
+	}
+}
+
+- (NSString*) nextFileName
+{
+	NSString* fn = nil;
+	[self performSelectorOnMainThread:@selector(queuedFileNamesPop:) withObject:(id)&fn waitUntilDone:YES];
+	if(!fn) {
+		[nextFileNameLock lock];
+		fn = [[NSString alloc] initWithUTF8String:FileQueue_getNextFile()];
+		[nextFileNameLock unlock];
+	}
+	return fn;
+}
+
+- (void)load:(NSString*)fn {
+	NSImage* nextImage = [[NSImage alloc] initWithContentsOfFile:fn];
+	NSLog(@"loaded %s", [fn UTF8String]);
+	[self performSelectorOnMainThread:@selector(transitionToImage:) withObject:nextImage waitUntilDone:YES];	
+}
 
 - (void)loadNext {
-	NSString* s = [[NSString alloc] initWithUTF8String:FileQueue_getNextFile()];
-	NSImage* nextImage = [[NSImage alloc] initWithContentsOfFile:s];
-	NSLog(@"loaded %s", [s UTF8String]);
-	[self performSelectorOnMainThread:@selector(transitionToImage:) withObject:nextImage waitUntilDone:TRUE];
+	NSString* s = [self nextFileName];
+	[oldFileNames performSelectorOnMainThread:@selector(addObject:) withObject:s waitUntilDone:YES];
+	[self load:s];
 }
 
 - (void)advanceSlideshow:(NSTimer *)timer {
-	NSThread* thread= [[NSThread alloc] initWithTarget:self selector:@selector(loadNext) object:nil];
-	[thread start];
+	if([queuedFileNames count] > 0) {
+		// TODO: print some msg like "press XY to continue with the slideshow"
+	}
+	else {
+		NSThread* thread = [[NSThread alloc] initWithTarget:self selector:@selector(loadNext) object:nil];
+		[thread start];
+	}
 }
 
 - (id)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview
@@ -233,10 +261,14 @@ const float slideshowInterval = 5.0;
         [self setAnimationTimeInterval:1/60.0];
     }
 
+	oldFileNames = [[NSMutableArray alloc] init];
+	queuedFileNames = [[NSMutableArray alloc] init];
+	nextFileNameLock = [[NSLock alloc] init];
+	
 	[self setWantsLayer:YES];
 	[self startSlideshowTimer];
 	[self loadNext];
-	
+
 	return self;
 }
 
@@ -280,6 +312,32 @@ const float slideshowInterval = 5.0;
     // Draw a solid black background.
     [[NSColor blackColor] set];
     NSRectFill(rect);
+}
+
+- (void)keyDown:(NSEvent *)theEvent
+{
+	unichar c = [[theEvent characters] characterAtIndex:0];
+	//NSLog(@"keydown: %hu", [[theEvent characters] characterAtIndex:0]);
+	switch(c) {
+		case 63234: // left
+		{
+			NSLog(@"left, olds: %@", oldFileNames);
+			if([oldFileNames count] < 2) return;
+			NSString* lastFn = [oldFileNames lastObject];
+			NSLog(@"last: %@", lastFn);
+			[oldFileNames removeLastObject];
+			[queuedFileNames insertObject:lastFn atIndex:0];
+			[self load:[oldFileNames lastObject]];
+			break;
+		}	
+		case 63235: // right
+			[self loadNext];
+			break;
+		case 27: // esc
+		default:
+			[super keyDown:theEvent];
+			break;
+	}
 }
 
 @end

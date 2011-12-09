@@ -17,5 +17,10 @@
 	CIImage         *inputMaskImage;            // a mask image that the transition filter may use in generating the transition effect
 
 	NSTimer* slideshowTimer;
+	
+	NSMutableArray* oldFileNames;
+	NSMutableArray* queuedFileNames;
+	
+	NSLock* nextFileNameLock;
 }
 @end
