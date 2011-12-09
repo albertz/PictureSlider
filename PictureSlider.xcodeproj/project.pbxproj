@@ -16,6 +16,8 @@
 		23DA3FBD14915B00000D553A /* demo_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 23DA3FBC14915B00000D553A /* demo_main.cpp */; };
 		23DA3FCC14915B4F000D553A /* FileQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 23DA3FB71491028B000D553A /* FileQueue.cpp */; };
 		23DA3FCD14915B99000D553A /* demo_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 23DA3FBC14915B00000D553A /* demo_main.cpp */; };
+		23DA3FD314923904000D553A /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DA3FD214923904000D553A /* QuartzCore.framework */; };
+		23DA3FD514923910000D553A /* Quartz.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23DA3FD414923910000D553A /* Quartz.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -46,6 +48,8 @@
 		23DA3FBA149102A0000D553A /* FileQueue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileQueue.h; sourceTree = "<group>"; };
 		23DA3FBC14915B00000D553A /* demo_main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = demo_main.cpp; sourceTree = "<group>"; };
 		23DA3FC214915B47000D553A /* demo_main */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = demo_main; sourceTree = BUILT_PRODUCTS_DIR; };
+		23DA3FD214923904000D553A /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		23DA3FD414923910000D553A /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = System/Library/Frameworks/Quartz.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +57,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23DA3FD514923910000D553A /* Quartz.framework in Frameworks */,
+				23DA3FD314923904000D553A /* QuartzCore.framework in Frameworks */,
 				23DA3F9E1490FB5A000D553A /* Cocoa.framework in Frameworks */,
 				23DA3FA01490FB5A000D553A /* ScreenSaver.framework in Frameworks */,
 			);
@@ -71,6 +77,8 @@
 		23DA3F8D1490FB58000D553A = {
 			isa = PBXGroup;
 			children = (
+				23DA3FD414923910000D553A /* Quartz.framework */,
+				23DA3FD214923904000D553A /* QuartzCore.framework */,
 				23DA3FA51490FB5A000D553A /* PictureSlider */,
 				23DA3F9C1490FB5A000D553A /* Frameworks */,
 				23DA3F9B1490FB5A000D553A /* Products */,
