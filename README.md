@@ -10,4 +10,4 @@ The main differences so far:
 * It skips some directories, e.g. any hidden ones and iPhoto/other caches.
 * It only displays high-res (>1MB) pictures.
 
-- Albert Zeyer <http://www.az2000.de>
+-- Albert Zeyer <http://www.az2000.de>
