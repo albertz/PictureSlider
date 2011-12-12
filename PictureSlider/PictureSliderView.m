@@ -341,6 +341,7 @@ const float slideshowInterval = 5.0;
 			[self loadNext];
 			break;
 		case 27: // esc
+			exit(0);
 		default:
 			[super keyDown:theEvent];
 			break;
