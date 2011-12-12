@@ -16,7 +16,9 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {	
 	NSLog(@"applicationDidFinishLaunching");
-	[[self window] setContentView:[[PictureSliderView alloc] init]];
+	NSView* view = [[PictureSliderView alloc] init];
+	[[self window] setContentView:view];
+	[[self window] makeFirstResponder:view];
 }
 
 - (void) windowWillClose:(NSNotification *)notification
