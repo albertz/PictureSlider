@@ -19,4 +19,10 @@
 	[[self window] setContentView:[[PictureSliderView alloc] init]];
 }
 
+- (void) windowWillClose:(NSNotification *)notification
+{
+	exit(0);
+}
+
+
 @end
