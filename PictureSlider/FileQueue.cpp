@@ -88,29 +88,30 @@ struct Dir {
 	std::string randomGet() {
 		if(!isLoaded) load();
 		
-	redo:
-		size_t rmax = expectedFilesCount();
-		if(rmax == 0) return "";
-		size_t r = rndInt(0, rmax - 1);
-		//printf("randomGet(%s): files:%lu, exp:%lu, r:%lu\n", base.c_str(), files.size(), rmax, r);
-		if(r < files.size())
-			return base + "/" + files[r];
-		r -= files.size();
-		for(auto& d : loadedDirs) {
-			size_t c = d->expectedFilesCount();
-			if(r < c)
-				return d->randomGet();
-			r -= c;
+		while(true) {
+			size_t rmax = expectedFilesCount();
+			if(rmax == 0) return "";
+			size_t r = rndInt(0, rmax - 1);
+			//printf("randomGet(%s): files:%lu, exp:%lu, rnd:%lu\n", base.c_str(), files.size(), rmax, r);
+			
+			if(r < files.size())
+				return base + "/" + files[r];
+			r -= files.size();
+			
+			for(auto& d : loadedDirs) {
+				size_t c = d->expectedFilesCount();
+				if(r < c)
+					return d->randomGet();
+				r -= c;
+			}
+			
+			assert(nonloadedDirs.size() > 0);
+			r = rndInt(0, nonloadedDirs.size() - 1);
+			std::shared_ptr<Dir> d = nonloadedDirs[r];
+			nonloadedDirs.erase(nonloadedDirs.begin() + r);
+			d->load();
+			loadedDirs.push_back(d);
 		}
-		
-		assert(nonloadedDirs.size() > 0);
-		r = rndInt(0, nonloadedDirs.size() - 1);
-		std::shared_ptr<Dir> d = nonloadedDirs[r];
-		nonloadedDirs.erase(nonloadedDirs.begin() + r);
-		loadedDirs.push_back(d);
-		std::string fn = d->randomGet();
-		if(fn == "") goto redo;
-		return fn;
 	}
 };
 
