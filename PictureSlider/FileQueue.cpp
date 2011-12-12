@@ -13,6 +13,7 @@
 #include <list>
 #include <random>
 #include <iostream>
+#include <algorithm>
 #include <assert.h>
 #include <sys/types.h>
 #include <dirent.h>
@@ -41,6 +42,7 @@ static bool _isGoodFile(const std::string& basefn, struct dirent* dp) {
 }
 
 static const float C_nonloaded_dirs_expectedFac = 0.5;
+static const size_t C_nonloaded_dirs_expectedMin = 100;
 
 struct Dir {
 	Dir(): isLoaded(false) {}
@@ -81,7 +83,7 @@ struct Dir {
 		c += files.size();
 		for(auto& d : loadedDirs)
 			c += d->expectedFilesCount();
-		c += size_t( nonloadedDirs.size() * C_nonloaded_dirs_expectedFac * c );
+		c += nonloadedDirs.size() * std::max(size_t( C_nonloaded_dirs_expectedFac * c ), C_nonloaded_dirs_expectedMin);
 		return c;
 	}
 	
