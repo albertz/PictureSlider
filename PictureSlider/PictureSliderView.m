@@ -213,6 +213,13 @@ const float slideshowInterval = 5.0;
     }
 }
 
+- (void)resetSlideshowTimer {
+	if(slideshowTimer == nil) return;
+	// don't know a better way to do this...
+	[self stopSlideshowTimer];
+	[self startSlideshowTimer];
+}
+
 - (void) queuedFileNamesPop:(NSString**)fn {
 	if([queuedFileNames count] > 0) {
 		*fn = [queuedFileNames objectAtIndex:0];
@@ -338,6 +345,7 @@ const float slideshowInterval = 5.0;
 			[super keyDown:theEvent];
 			break;
 	}
+	[self resetSlideshowTimer];
 }
 
 @end
