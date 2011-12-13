@@ -77,7 +77,8 @@ const float slideshowInterval = 5.0;
 - (void)load:(NSString*)fn {
 	NSImage* nextImage = [[NSImage alloc] initWithContentsOfFile:fn];
 	NSLog(@"loaded %s", [fn UTF8String]);
-	[self performSelectorOnMainThread:@selector(transitionToImage:) withObject:nextImage waitUntilDone:YES];	
+	[self performSelectorOnMainThread:@selector(transitionToImage:) withObject:nextImage waitUntilDone:YES];
+	[nextImage release];
 }
 
 - (void)loadNext {
