@@ -32,6 +32,11 @@
 {
 	unichar c = [[theEvent characters] characterAtIndex:0];
 	switch(c) {
+		case 's':
+			while(true) {
+				[self loadNext];
+			}
+			break;
 		case 63235: // right
 			[self loadNext];
 			break;
