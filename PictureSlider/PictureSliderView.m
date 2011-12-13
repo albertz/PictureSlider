@@ -20,6 +20,7 @@
         newImageView = [[NSImageView alloc] initWithFrame:[self bounds]];
         [newImageView setImage:newImage];
         [newImageView setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
+		[newImageView autorelease];
     }
     if (currentImageView) [currentImageView removeFromSuperview];
     if (newImageView) [self addSubview:newImageView];
