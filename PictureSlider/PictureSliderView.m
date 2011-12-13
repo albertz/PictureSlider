@@ -61,6 +61,7 @@ const float slideshowInterval = 5.0;
 	NSString* fn = nil;
 	[nextFileNameLock lock];
 	fn = [[NSString alloc] initWithUTF8String:FileQueue_getNextFile()];
+	FileQueue_reset(); // just to ensure that there is no memory taken by this
 	[nextFileNameLock unlock];
 	return fn;
 }
