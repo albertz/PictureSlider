@@ -14,92 +14,18 @@
 
 @implementation PictureSliderView
 
-- (void)transitionToImage:(NSImage *)newImage {
-    NSImageView *newImageView = nil;
-    if (newImage) {
-        newImageView = [[NSImageView alloc] initWithFrame:[self bounds]];
-        [newImageView setImage:newImage];
-        [newImageView setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
-		[newImageView autorelease];
-    }
-    if (currentImageView) [currentImageView removeFromSuperview];
-    if (newImageView) [self addSubview:newImageView];
-	[currentImageView release];
-    currentImageView = newImageView;
-}
-
-- (NSString*) nextFileName
+- (NSString*)nextFileName
 {
 	NSString* fn = [[NSString alloc] initWithUTF8String:FileQueue_getNextFile()];
 	FileQueue_reset(); // just to ensure that there is no memory taken by this
 	return fn;
 }
 
-- (void)load:(NSString*)fn {
+- (void)loadNext {
+	NSString* fn = [self nextFileName];
 	NSImage* nextImage = [[NSImage alloc] initWithContentsOfFile:fn];
 	NSLog(@"loaded %s", [fn UTF8String]);
-	[self transitionToImage:nextImage];
-	[nextImage autorelease];
-}
-
-- (void)loadNext {
-	NSString* s = [self nextFileName];
-	[self load:s];
-}
-
-
-- (id)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview
-{
-    self = [super initWithFrame:frame isPreview:isPreview];
-    if (self) {
-        [self setAnimationTimeInterval:1/60.0];
-    }
-	
-	[self setWantsLayer:YES];
-	[self loadNext];
-
-	return self;
-}
-
-- (void)startAnimation
-{
-    [super startAnimation];
-}
-
-- (void)stopAnimation
-{
-    [super stopAnimation];
-}
-
-- (void)animateOneFrame
-{
-    return;
-}
-
-- (BOOL)hasConfigureSheet
-{
-    return NO;
-}
-
-- (NSWindow*)configureSheet
-{
-    return nil;
-}
-
-- (void)dealloc {
-    [currentImageView release];
-    [super dealloc];
-}
-
-- (BOOL)isOpaque {
-    // We're opaque, since we fill with solid black in our -drawRect: method, below.
-    return YES;
-}
-
-- (void)drawRect:(NSRect)rect {
-    // Draw a solid black background.
-    [[NSColor blackColor] set];
-    NSRectFill(rect);
+	[nextImage release];
 }
 
 - (void)keyDown:(NSEvent *)theEvent
@@ -117,5 +43,38 @@
 			break;
 	}
 }
+
+- (id)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview
+{
+    self = [super initWithFrame:frame isPreview:isPreview];
+    if (self) {
+        [self setAnimationTimeInterval:1/60.0];
+    }
+	
+	[self setWantsLayer:YES];
+	[self loadNext];
+
+	return self;
+}
+
+- (void)animateOneFrame
+{
+    return;
+}
+
+- (BOOL)hasConfigureSheet
+{
+    return NO;
+}
+
+- (NSWindow*)configureSheet
+{
+    return nil;
+}
+
+- (BOOL)isOpaque {
+    return YES;
+}
+
 
 @end

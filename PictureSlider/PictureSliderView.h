@@ -12,6 +12,5 @@
 
 @interface PictureSliderView : ScreenSaverView
 {
-	NSImageView     *currentImageView;          // an NSImageView that displays the current image, as a subview of the SlideshowView
 }
 @end
