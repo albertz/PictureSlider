@@ -14,6 +14,7 @@ extern "C" {
 #endif
 	
 	const char* FileQueue_getNextFile();
+	void FileQueue_reset();
 	
 #ifdef __cplusplus
 }

@@ -134,3 +134,6 @@ const char* FileQueue_getNextFile() {
 	return _nextFile.c_str();
 }
 
+void FileQueue_reset() {
+	_queue = FileQueue();
+}
