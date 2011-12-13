@@ -23,8 +23,8 @@
         [newImageView setImage:newImage];
         [newImageView setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
     }
-    if (currentImageView) [[currentImageView animator] removeFromSuperview];
-    if (newImageView) [[self animator] addSubview:newImageView];
+    if (currentImageView) [currentImageView removeFromSuperview];
+    if (newImageView) [self addSubview:newImageView];
 	[currentImageView release];
     currentImageView = newImageView;
 }
