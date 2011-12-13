@@ -38,6 +38,7 @@
 	NSImage* nextImage = [[NSImage alloc] initWithContentsOfFile:fn];
 	NSLog(@"loaded %s", [fn UTF8String]);
 	[self transitionToImage:nextImage];
+	[nextImage autorelease];
 }
 
 - (void)loadNext {
