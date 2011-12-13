@@ -23,8 +23,8 @@
         [newImageView setImage:newImage];
         [newImageView setAutoresizingMask:NSViewWidthSizable | NSViewHeightSizable];
     }
-    if (currentImageView) [[currentImageView animator] removeFromSuperview];
-    if (newImageView) [[self animator] addSubview:newImageView];
+    if (currentImageView) [currentImageView removeFromSuperview];
+    if (newImageView) [self addSubview:newImageView];
 	[currentImageView release];
     currentImageView = newImageView;
 }
@@ -55,22 +55,12 @@ const float slideshowInterval = 5.0;
 	[self startSlideshowTimer];
 }
 
-- (void) queuedFileNamesPop:(NSString**)fn {
-	if([queuedFileNames count] > 0) {
-		*fn = [queuedFileNames objectAtIndex:0];
-		[queuedFileNames removeObjectAtIndex:0];
-	}
-}
-
 - (NSString*) nextFileName
 {
 	NSString* fn = nil;
-	[self performSelectorOnMainThread:@selector(queuedFileNamesPop:) withObject:(id)&fn waitUntilDone:YES];
-	if(!fn) {
-		[nextFileNameLock lock];
-		fn = [[NSString alloc] initWithUTF8String:FileQueue_getNextFile()];
-		[nextFileNameLock unlock];
-	}
+	[nextFileNameLock lock];
+	fn = [[NSString alloc] initWithUTF8String:FileQueue_getNextFile()];
+	[nextFileNameLock unlock];
 	return fn;
 }
 
@@ -84,18 +74,12 @@ const float slideshowInterval = 5.0;
 
 - (void)loadNext {
 	NSString* s = [self nextFileName];
-	[oldFileNames performSelectorOnMainThread:@selector(addObject:) withObject:s waitUntilDone:YES];
 	[self load:s];
 }
 
 - (void)advanceSlideshow:(NSTimer *)timer {
-	if([queuedFileNames count] > 0) {
-		// TODO: print some msg like "press XY to continue with the slideshow"
-	}
-	else {
-		NSThread* thread = [[NSThread alloc] initWithTarget:self selector:@selector(loadNext) object:nil];
-		[thread start];
-	}
+	NSThread* thread = [[NSThread alloc] initWithTarget:self selector:@selector(loadNext) object:nil];
+	[thread start];
 }
 
 - (id)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview
@@ -105,8 +89,6 @@ const float slideshowInterval = 5.0;
         [self setAnimationTimeInterval:1/60.0];
     }
 
-	oldFileNames = [[NSMutableArray alloc] init];
-	queuedFileNames = [[NSMutableArray alloc] init];
 	nextFileNameLock = [[NSLock alloc] init];
 	
 	[self setWantsLayer:YES];
@@ -162,15 +144,6 @@ const float slideshowInterval = 5.0;
 {
 	unichar c = [[theEvent characters] characterAtIndex:0];
 	switch(c) {
-		case 63234: // left
-		{
-			if([oldFileNames count] < 2) return;
-			NSString* lastFn = [oldFileNames lastObject];
-			[oldFileNames removeLastObject];
-			[queuedFileNames insertObject:lastFn atIndex:0];
-			[self load:[oldFileNames lastObject]];
-			break;
-		}	
 		case 63235: // right
 			[self loadNext];
 			break;

@@ -16,9 +16,6 @@
 
 	NSTimer* slideshowTimer;
 	
-	NSMutableArray* oldFileNames;
-	NSMutableArray* queuedFileNames;
-	
 	NSLock* nextFileNameLock;
 }
 @end
