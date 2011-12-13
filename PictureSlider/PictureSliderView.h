@@ -13,8 +13,6 @@
 @interface PictureSliderView : ScreenSaverView
 {
 	NSImageView     *currentImageView;          // an NSImageView that displays the current image, as a subview of the SlideshowView
-	CIImage         *inputShadingImage;         // an environment-map image that the transition filter may use in generating the transition effect
-	CIImage         *inputMaskImage;            // a mask image that the transition filter may use in generating the transition effect
 
 	NSTimer* slideshowTimer;
 	
