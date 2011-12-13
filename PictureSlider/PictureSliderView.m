@@ -12,8 +12,6 @@
 #import "PictureSliderView.h"
 #include "FileQueue.h"
 
-// Much of the code for the transition animation is based on Apples Cocoa Slides example.
-
 @implementation PictureSliderView
 
 - (void)transitionToImage:(NSImage *)newImage {
@@ -28,33 +26,6 @@
 	[currentImageView release];
     currentImageView = newImageView;
 }
-
-
-const float slideshowInterval = 5.0;
-
-- (void)startSlideshowTimer {
-    if (slideshowTimer == nil && slideshowInterval > 0.0) {
-        // Schedule an ordinary NSTimer that will invoke -advanceSlideshow: at regular intervals, each time we need to advance to the next slide.
-        slideshowTimer = [[NSTimer scheduledTimerWithTimeInterval:slideshowInterval target:self selector:@selector(advanceSlideshow:) userInfo:nil repeats:YES] retain];
-    }
-}
-
-- (void)stopSlideshowTimer {
-    if (slideshowTimer != nil) {
-        // Cancel and release the slideshow advance timer.
-        [slideshowTimer invalidate];
-        [slideshowTimer release];
-        slideshowTimer = nil;
-    }
-}
-
-- (void)resetSlideshowTimer {
-	if(slideshowTimer == nil) return;
-	// don't know a better way to do this...
-	[self stopSlideshowTimer];
-	[self startSlideshowTimer];
-}
-
 
 - (NSString*) nextFileName
 {
@@ -74,9 +45,6 @@ const float slideshowInterval = 5.0;
 	[self load:s];
 }
 
-- (void)advanceSlideshow:(NSTimer *)timer {
-	[self loadNext];
-}
 
 - (id)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview
 {
@@ -86,7 +54,6 @@ const float slideshowInterval = 5.0;
     }
 	
 	[self setWantsLayer:YES];
-	[self startSlideshowTimer];
 	[self loadNext];
 
 	return self;
@@ -119,7 +86,6 @@ const float slideshowInterval = 5.0;
 
 - (void)dealloc {
     [currentImageView release];
-    [self stopSlideshowTimer];
     [super dealloc];
 }
 
@@ -148,7 +114,6 @@ const float slideshowInterval = 5.0;
 			[super keyDown:theEvent];
 			break;
 	}
-	[self resetSlideshowTimer];
 }
 
 @end
