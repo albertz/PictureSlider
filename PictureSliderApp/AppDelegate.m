@@ -19,7 +19,6 @@
 	NSView* view = [[PictureSliderView alloc] init];
 	[[self window] setContentView:view];
 	[[self window] makeFirstResponder:view];
-	[view release];
 }
 
 - (void) windowWillClose:(NSNotification *)notification
