@@ -328,10 +328,8 @@ const float slideshowInterval = 5.0;
 	switch(c) {
 		case 63234: // left
 		{
-			NSLog(@"left, olds: %@", oldFileNames);
 			if([oldFileNames count] < 2) return;
 			NSString* lastFn = [oldFileNames lastObject];
-			NSLog(@"last: %@", lastFn);
 			[oldFileNames removeLastObject];
 			[queuedFileNames insertObject:lastFn atIndex:0];
 			[self load:[oldFileNames lastObject]];
