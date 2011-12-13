@@ -32,11 +32,7 @@
 
 - (NSString*) nextFileName
 {
-	NSString* fn = nil;
-	[nextFileNameLock lock];
-	fn = [[NSString alloc] initWithUTF8String:FileQueue_getNextFile()];
-	[nextFileNameLock unlock];
-	return fn;
+	return [[NSString alloc] initWithUTF8String:FileQueue_getNextFile()];
 }
 
 - (void)load:(NSString*)fn {
@@ -44,12 +40,12 @@
 	NSLog(@"loaded %s", [fn UTF8String]);
 	[self performSelectorOnMainThread:@selector(transitionToImage:) withObject:nextImage waitUntilDone:YES];
 	[nextImage release];
-	[fn release];
 }
 
 - (void)loadNext {
 	NSString* s = [self nextFileName];
 	[self load:s];
+	[s release];
 }
 
 - (id)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview
@@ -59,8 +55,6 @@
         [self setAnimationTimeInterval:1/60.0];
     }
 
-	nextFileNameLock = [[NSLock alloc] init];
-	
 	[self setWantsLayer:YES];
 	[self loadNext];
 
