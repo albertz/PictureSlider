@@ -25,7 +25,6 @@
 	NSString* fn = [self nextFileName];
 	NSImage* nextImage = [[NSImage alloc] initWithContentsOfFile:fn];
 	NSLog(@"loaded %s", [fn UTF8String]);
-	[nextImage release];
 }
 
 - (void)keyDown:(NSEvent *)theEvent
