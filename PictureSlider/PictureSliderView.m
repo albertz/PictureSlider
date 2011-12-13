@@ -30,31 +30,6 @@
 }
 
 
-const float slideshowInterval = 5.0;
-
-- (void)startSlideshowTimer {
-    if (slideshowTimer == nil && slideshowInterval > 0.0) {
-        // Schedule an ordinary NSTimer that will invoke -advanceSlideshow: at regular intervals, each time we need to advance to the next slide.
-        slideshowTimer = [[NSTimer scheduledTimerWithTimeInterval:slideshowInterval target:self selector:@selector(advanceSlideshow:) userInfo:nil repeats:YES] retain];
-    }
-}
-
-- (void)stopSlideshowTimer {
-    if (slideshowTimer != nil) {
-        // Cancel and release the slideshow advance timer.
-        [slideshowTimer invalidate];
-        [slideshowTimer release];
-        slideshowTimer = nil;
-    }
-}
-
-- (void)resetSlideshowTimer {
-	if(slideshowTimer == nil) return;
-	// don't know a better way to do this...
-	[self stopSlideshowTimer];
-	[self startSlideshowTimer];
-}
-
 - (NSString*) nextFileName
 {
 	NSString* fn = nil;
@@ -77,11 +52,6 @@ const float slideshowInterval = 5.0;
 	[self load:s];
 }
 
-- (void)advanceSlideshow:(NSTimer *)timer {
-	NSThread* thread = [[NSThread alloc] initWithTarget:self selector:@selector(loadNext) object:nil];
-	[thread start];
-}
-
 - (id)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview
 {
     self = [super initWithFrame:frame isPreview:isPreview];
@@ -92,7 +62,6 @@ const float slideshowInterval = 5.0;
 	nextFileNameLock = [[NSLock alloc] init];
 	
 	[self setWantsLayer:YES];
-	[self startSlideshowTimer];
 	[self loadNext];
 
 	return self;
@@ -125,7 +94,6 @@ const float slideshowInterval = 5.0;
 
 - (void)dealloc {
     [currentImageView release];
-    [self stopSlideshowTimer];
     [super dealloc];
 }
 
@@ -154,7 +122,6 @@ const float slideshowInterval = 5.0;
 			[super keyDown:theEvent];
 			break;
 	}
-	[self resetSlideshowTimer];
 }
 
 @end
