@@ -324,7 +324,6 @@ const float slideshowInterval = 5.0;
 - (void)keyDown:(NSEvent *)theEvent
 {
 	unichar c = [[theEvent characters] characterAtIndex:0];
-	//NSLog(@"keydown: %hu", [[theEvent characters] characterAtIndex:0]);
 	switch(c) {
 		case 63234: // left
 		{
@@ -341,6 +340,7 @@ const float slideshowInterval = 5.0;
 		case 27: // esc
 			exit(0);
 		default:
+			NSLog(@"unhandled keydown: %hu", [[theEvent characters] characterAtIndex:0]);
 			[super keyDown:theEvent];
 			break;
 	}
