@@ -58,18 +58,15 @@ const float slideshowInterval = 5.0;
 
 - (NSString*) nextFileName
 {
-	NSString* fn = nil;
-	[nextFileNameLock lock];
-	fn = [[NSString alloc] initWithUTF8String:FileQueue_getNextFile()];
+	NSString* fn = [[NSString alloc] initWithUTF8String:FileQueue_getNextFile()];
 	FileQueue_reset(); // just to ensure that there is no memory taken by this
-	[nextFileNameLock unlock];
 	return fn;
 }
 
 - (void)load:(NSString*)fn {
 	NSImage* nextImage = [[NSImage alloc] initWithContentsOfFile:fn];
 	NSLog(@"loaded %s", [fn UTF8String]);
-	[self performSelectorOnMainThread:@selector(transitionToImage:) withObject:nextImage waitUntilDone:YES];	
+	[self transitionToImage:nextImage];
 }
 
 - (void)loadNext {
@@ -78,8 +75,7 @@ const float slideshowInterval = 5.0;
 }
 
 - (void)advanceSlideshow:(NSTimer *)timer {
-	NSThread* thread = [[NSThread alloc] initWithTarget:self selector:@selector(loadNext) object:nil];
-	[thread start];
+	[self loadNext];
 }
 
 - (id)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview
@@ -88,8 +84,6 @@ const float slideshowInterval = 5.0;
     if (self) {
         [self setAnimationTimeInterval:1/60.0];
     }
-
-	nextFileNameLock = [[NSLock alloc] init];
 	
 	[self setWantsLayer:YES];
 	[self startSlideshowTimer];
