@@ -55,7 +55,8 @@ const float slideshowInterval = 5.0;
 	[self startSlideshowTimer];
 }
 
-- (void) queuedFileNamesPop:(NSString**)fn {
+- (void) queuedFileNamesPop:(NSValue*)fnHandle {
+	NSString** fn = [fnHandle pointerValue];
 	if([queuedFileNames count] > 0) {
 		*fn = [queuedFileNames objectAtIndex:0];
 		[queuedFileNames removeObjectAtIndex:0];
@@ -65,7 +66,8 @@ const float slideshowInterval = 5.0;
 - (NSString*) nextFileName
 {
 	NSString* fn = nil;
-	[self performSelectorOnMainThread:@selector(queuedFileNamesPop:) withObject:(id)&fn waitUntilDone:YES];
+	NSValue* fnHandle = [NSValue valueWithPointer: &fn];
+	[self performSelectorOnMainThread:@selector(queuedFileNamesPop:) withObject:fnHandle waitUntilDone:YES];
 	if(!fn) {
 		[nextFileNameLock lock];
 		fn = [[NSString alloc] initWithUTF8String:FileQueue_getNextFile()];
