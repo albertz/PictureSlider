@@ -81,7 +81,6 @@ const float slideshowInterval = 5.0;
 	NSLog(@"loaded %s", [fn UTF8String]);
 	[self performSelectorOnMainThread:@selector(transitionToImage:) withObject:nextImage waitUntilDone:YES];
 	[nextImage release];
-	[fn release];
 }
 
 - (void)loadNext {
