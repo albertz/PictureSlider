@@ -102,14 +102,18 @@ const float slideshowInterval = 5.0;
 - (id)initWithFrame:(NSRect)frame isPreview:(BOOL)isPreview
 {
     self = [super initWithFrame:frame isPreview:isPreview];
-    if (self) {
-        [self setAnimationTimeInterval:1/60.0];
-    }
 
 	oldFileNames = [[NSMutableArray alloc] init];
 	queuedFileNames = [[NSMutableArray alloc] init];
 	nextFileNameLock = [[NSLock alloc] init];
+
+	[self setAnimationTimeInterval:1/60.0];
 	
+	CATransition *newTransition = [CATransition animation];
+	[newTransition setDuration:1];
+	[newTransition setSpeed:2];
+	[self setAnimations:[NSDictionary dictionaryWithObject:newTransition forKey:@"subviews"]];
+
 	[self setWantsLayer:YES];
 	[self startSlideshowTimer];
 	[self loadNext];
